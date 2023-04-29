@@ -1,0 +1,16 @@
+[gd_resource type="SpatialMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://textures/wood_floor_051/WoodFloor051_2K_AmbientOcclusion.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/wood_floor_051/WoodFloor051_2K_Roughness.jpg" type="Texture" id=3]
+[ext_resource path="res://textures/wood_floor_051/WoodFloor051_2K_Color.jpg" type="Texture" id=4]
+
+[resource]
+params_cull_mode = 2
+albedo_texture = ExtResource( 4 )
+roughness_texture = ExtResource( 3 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 1.5, 1.5, 1 )

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/pickable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://menu_items/food/food_glb/Waffle.glb" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.13074, 0.293369, 1.52902 )
+
+[node name="Pickable" instance=ExtResource( 1 )]
+mode = 1
+
+[node name="CollisionShape" parent="." index="0"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00176334, 0.000229601, 0 )
+shape = SubResource( 1 )
+
+[node name="Waffle" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )

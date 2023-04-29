@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/objects/pickable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://menu_items/items/items_glb/Star.glb" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="star" instance=ExtResource( 1 )]
+mode = 1
+
+[node name="Star" parent="." index="0" instance=ExtResource( 2 )]
+transform = Transform( 0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, 0, -0.183364 )
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+shape = SubResource( 1 )

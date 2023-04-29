@@ -1,0 +1,13 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://textures/wood_floor_007/WoodFloor007_2K_Color.jpg" type="Texture" id=2]
+[ext_resource path="res://textures/wood_floor_007/WoodFloor007_2K_AmbientOcclusion.jpg" type="Texture" id=3]
+
+[resource]
+albedo_texture = ExtResource( 2 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 3 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 2.5, 2.5, 1 )

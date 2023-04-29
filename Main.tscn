@@ -1,0 +1,310 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/godot-xr-tools/functions/function_teleport.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/godot-xr-tools/functions/movement_turn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://menu/function_menu.gd" type="Script" id=7]
+[ext_resource path="res://lighting/Main.lmbake" type="BakedLightmapData" id=8]
+[ext_resource path="res://rooms/rooms_scenes/Bedroom_1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://rooms/rooms_scenes/Bedroom_2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://rooms/rooms_scenes/Bedroom_3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://rooms/rooms_scenes/Bathroom_Upstairs.tscn" type="PackedScene" id=13]
+[ext_resource path="res://rooms/rooms_scenes/Bathroom_Downstairs.tscn" type="PackedScene" id=14]
+[ext_resource path="res://rooms/rooms_scenes/Kitchen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://rooms/rooms_scenes/Sitting_Room.tscn" type="PackedScene" id=16]
+[ext_resource path="res://rooms/rooms_scenes/Utility.tscn" type="PackedScene" id=17]
+[ext_resource path="res://rooms/rooms_scenes/Hallway.tscn" type="PackedScene" id=18]
+[ext_resource path="res://addons/godot-xr-tools/functions/function_pointer.tscn" type="PackedScene" id=19]
+[ext_resource path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" type="PackedScene" id=20]
+[ext_resource path="res://addons/godot-xr-tools/player/player_body.tscn" type="PackedScene" id=22]
+[ext_resource path="res://addons/godot-xr-tools/functions/function_pickup.tscn" type="PackedScene" id=24]
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "Grip"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "Grip"
+
+[sub_resource type="AnimationNodeBlend2" id=40]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L" ]
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "Grip 5"
+
+[sub_resource type="AnimationNodeBlend2" id=42]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L" ]
+
+[sub_resource type="AnimationNodeBlendTree" id=43]
+graph_offset = Vector2( -798.981, 58.67 )
+nodes/ClosedHand1/node = SubResource( 38 )
+nodes/ClosedHand1/position = Vector2( -600, 300 )
+nodes/ClosedHand2/node = SubResource( 39 )
+nodes/ClosedHand2/position = Vector2( -360, 300 )
+nodes/Grip/node = SubResource( 40 )
+nodes/Grip/position = Vector2( 0, 20 )
+nodes/OpenHand/node = SubResource( 41 )
+nodes/OpenHand/position = Vector2( -600, 100 )
+nodes/Trigger/node = SubResource( 42 )
+nodes/Trigger/position = Vector2( -360, 20 )
+node_connections = [ "Grip", 0, "Trigger", "Grip", 1, "ClosedHand2", "Trigger", 0, "OpenHand", "Trigger", 1, "ClosedHand1", "output", 0, "Grip" ]
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "Grip"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "Grip"
+
+[sub_resource type="AnimationNodeBlend2" id=46]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Little_Distal_R", "Armature/Skeleton:Little_Intermediate_R", "Armature/Skeleton:Little_Proximal_R", "Armature/Skeleton:Middle_Distal_R", "Armature/Skeleton:Middle_Intermediate_R", "Armature/Skeleton:Middle_Proximal_R", "Armature/Skeleton:Ring_Distal_R", "Armature/Skeleton:Ring_Intermediate_R", "Armature/Skeleton:Ring_Proximal_R", "Armature/Skeleton:Thumb_Distal_R", "Armature/Skeleton:Thumb_Proximal_R" ]
+
+[sub_resource type="AnimationNodeAnimation" id=47]
+animation = "Grip 5"
+
+[sub_resource type="AnimationNodeBlend2" id=48]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Index_Distal_R", "Armature/Skeleton:Index_Intermediate_R", "Armature/Skeleton:Index_Proximal_R" ]
+
+[sub_resource type="AnimationNodeBlendTree" id=49]
+graph_offset = Vector2( -753.664, -85.6991 )
+nodes/ClosedHand1/node = SubResource( 44 )
+nodes/ClosedHand1/position = Vector2( -600, 300 )
+nodes/ClosedHand2/node = SubResource( 45 )
+nodes/ClosedHand2/position = Vector2( -360, 300 )
+nodes/Grip/node = SubResource( 46 )
+nodes/Grip/position = Vector2( 0, 40 )
+nodes/OpenHand/node = SubResource( 47 )
+nodes/OpenHand/position = Vector2( -600, 100 )
+nodes/Trigger/node = SubResource( 48 )
+nodes/Trigger/position = Vector2( -360, 40 )
+node_connections = [ "Grip", 0, "Trigger", "Grip", 1, "ClosedHand2", "Trigger", 0, "OpenHand", "Trigger", 1, "ClosedHand1", "output", 0, "Grip" ]
+
+[sub_resource type="QuadMesh" id=34]
+resource_local_to_scene = true
+size = Vector2( 0.7, 0.35 )
+
+[sub_resource type="ViewportTexture" id=50]
+flags = 4
+
+[sub_resource type="SpatialMaterial" id=51]
+flags_transparent = true
+params_cull_mode = 2
+albedo_texture = SubResource( 50 )
+
+[sub_resource type="BoxShape" id=37]
+resource_local_to_scene = true
+extents = Vector3( 0.35, 0.175, 0.01 )
+
+[node name="Main" type="Spatial"]
+
+[node name="FPController" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.68098, 2.5228, 0.864673 )
+near_z = 0.01
+
+[node name="ARVRCamera" parent="FPController" index="1"]
+near = 0.01
+
+[node name="VRCommonShaderCache" parent="FPController/ARVRCamera" index="0" instance=ExtResource( 1 )]
+
+[node name="MenuLocation" type="Spatial" parent="FPController/ARVRCamera" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6 )
+
+[node name="LeftHandController" parent="FPController" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -1 )
+visible = true
+
+[node name="LeftHand" parent="FPController/LeftHandController" index="0" instance=ExtResource( 4 )]
+
+[node name="mesh_Hand_Nails_low_L" parent="FPController/LeftHandController/LeftHand/Hand_Nails_low_L/Armature/Skeleton" index="0"]
+material/0 = null
+
+[node name="AnimationTree" parent="FPController/LeftHandController/LeftHand" index="1"]
+tree_root = SubResource( 43 )
+
+[node name="FunctionPickup" parent="FPController/LeftHandController" index="1" instance=ExtResource( 24 )]
+delete_button = 1
+
+[node name="FunctionPointer" parent="FPController/LeftHandController" index="2" instance=ExtResource( 19 )]
+y_offset = -0.01
+
+[node name="FunctionTeleport" parent="FPController/LeftHandController" index="3" instance=ExtResource( 3 )]
+player_height = 0.4
+player_radius = 0.05
+valid_teleport_mask = 2
+teleport_button = 7
+
+[node name="Capsule" parent="FPController/LeftHandController/FunctionTeleport/Target/Player_figure" index="0"]
+visible = false
+
+[node name="FunctionMenu" type="Spatial" parent="FPController/LeftHandController" index="4"]
+script = ExtResource( 7 )
+
+[node name="RightHandController" parent="FPController" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -1 )
+visible = true
+
+[node name="RightHand" parent="FPController/RightHandController" index="0" instance=ExtResource( 5 )]
+
+[node name="mesh_Hand_Nails_low_R" parent="FPController/RightHandController/RightHand/Hand_Nails_low_R/Armature/Skeleton" index="0"]
+material/0 = null
+
+[node name="AnimationTree" parent="FPController/RightHandController/RightHand" index="1"]
+tree_root = SubResource( 49 )
+
+[node name="FunctionPickup" parent="FPController/RightHandController" index="1" instance=ExtResource( 24 )]
+delete_button = 1
+
+[node name="FunctionPointer" parent="FPController/RightHandController" index="2" instance=ExtResource( 19 )]
+y_offset = -0.01
+
+[node name="MovementTurn" parent="FPController/RightHandController" index="3" instance=ExtResource( 6 )]
+step_turn_angle = 45.0
+
+[node name="PlayerBody" parent="FPController" instance=ExtResource( 22 )]
+player_radius = 0.01
+player_head_height = 0.0
+player_height_min = 0.03
+push_rigid_bodies = false
+collision_layer = 0
+collision_mask = 1021
+
+[node name="Menu" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.39361, 3.8, -0.9 )
+screen_size = Vector2( 0.7, 0.35 )
+viewport_size = Vector2( 404, 250 )
+
+[node name="Viewport" parent="Menu" index="0"]
+size = Vector2( 404, 250 )
+
+[node name="Screen" parent="Menu" index="1"]
+use_in_baked_light = true
+mesh = SubResource( 34 )
+material/0 = SubResource( 51 )
+
+[node name="StaticBody" parent="Menu" index="2"]
+screen_size = Vector2( 0.7, 0.35 )
+viewport_size = Vector2( 404, 250 )
+
+[node name="CollisionShape" parent="Menu/StaticBody" index="0"]
+shape = SubResource( 37 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.766045, -0.321394, 0.55667, 0, 0.866025, 0.500001, -0.642787, 0.383023, -0.663414, -7.81269, 3.13185, -9.6462 )
+light_bake_mode = 2
+shadow_enabled = true
+
+[node name="BakedLightmap" type="BakedLightmap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423997, 4.13011, 1.98329 )
+extents = Vector3( 10, 6.62392, 8.04331 )
+quality = 3
+bias = 0.03
+light_data = ExtResource( 8 )
+
+[node name="RoomManager" type="RoomManager" parent="."]
+roomlist = NodePath("RoomList")
+
+[node name="RoomList" type="Spatial" parent="RoomManager"]
+
+[node name="Bedroom_1" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Bedroom_1" parent="RoomManager/RoomList/Bedroom_1" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67246, 2.50322, 0.141239 )
+
+[node name="Portal" type="Portal" parent="RoomManager/RoomList/Bedroom_1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.23496, 3.34151, 0.771684 )
+linked_room = NodePath("../../Hallway")
+points = PoolVector2Array( 0.615847, -0.851308, 0.564302, 1.1729, -0.525379, 1.14926, -0.53138, -0.838633 )
+
+[node name="Bedroom_2" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Bedroom_2" parent="RoomManager/RoomList/Bedroom_2" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.3227, 2.49298, 4.51889 )
+
+[node name="Portal" type="Portal" parent="RoomManager/RoomList/Bedroom_2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42893, 3.34151, 2.17886 )
+linked_room = NodePath("../../Hallway")
+points = PoolVector2Array( 0.615847, -0.851308, 0.564302, 1.1729, -0.525379, 1.14926, -0.53138, -0.838633 )
+
+[node name="Bedroom_3" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Bedroom_3" parent="RoomManager/RoomList/Bedroom_3" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73534, 2.46075, 5.07851 )
+
+[node name="Portal" type="Portal" parent="RoomManager/RoomList/Bedroom_3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49213, 3.34151, 2.17886 )
+linked_room = NodePath("../../Hallway")
+points = PoolVector2Array( 0.615847, -0.851308, 0.564302, 1.1729, -0.525379, 1.14926, -0.53138, -0.838633 )
+
+[node name="Bathroom_Downstairs" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Bathroom_Downstairs" parent="RoomManager/RoomList/Bathroom_Downstairs" instance=ExtResource( 14 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.84808, -0.0364685, -0.917012 )
+
+[node name="Portal" type="Portal" parent="RoomManager/RoomList/Bathroom_Downstairs"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.67506, 0.808828, -0.620574 )
+linked_room = NodePath("../../Hallway")
+points = PoolVector2Array( 0.615847, -0.851308, 0.564302, 1.1729, -0.525379, 1.14926, -0.53138, -0.838633 )
+
+[node name="Bathroom_Upstairs" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Bathroom_Upstairs" parent="RoomManager/RoomList/Bathroom_Upstairs" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.59688, 2.47932, -0.502437 )
+
+[node name="Portal" type="Portal" parent="RoomManager/RoomList/Bathroom_Upstairs"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.67506, 3.34151, -0.639681 )
+linked_room = NodePath("../../Hallway")
+points = PoolVector2Array( 0.615847, -0.851308, 0.564302, 1.1729, -0.525379, 1.14926, -0.53138, -0.838633 )
+
+[node name="Hallway" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Hallway" parent="RoomManager/RoomList/Hallway" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2308, -0.0235629, 0.0453043 )
+
+[node name="Kitchen" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Kitchen" parent="RoomManager/RoomList/Kitchen" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74548, -0.0487716, 4.90861 )
+
+[node name="Portal" type="Portal" parent="RoomManager/RoomList/Kitchen"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42084, 0.806604, 2.17886 )
+linked_room = NodePath("../../Hallway")
+points = PoolVector2Array( 0.615847, -0.851308, 0.564498, 1.1511, -0.554657, 1.16056, -0.563028, -0.832347 )
+
+[node name="Portal2" type="Portal" parent="RoomManager/RoomList/Kitchen"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.35416, 0.806604, 2.17886 )
+linked_room = NodePath("../../Utility")
+points = PoolVector2Array( 0.544674, -0.829589, 0.508866, 1.17466, -0.554657, 1.16056, -0.563028, -0.832347 )
+
+[node name="Sitting_Room" type="Room" parent="RoomManager/RoomList"]
+
+[node name="Sitting_Room" parent="RoomManager/RoomList/Sitting_Room" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97959, -0.0341466, 4.09862 )
+
+[node name="Portal" type="Portal" parent="RoomManager/RoomList/Sitting_Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44496, 0.803688, 2.17886 )
+linked_room = NodePath("../../Hallway")
+points = PoolVector2Array( 0.615847, -0.851308, 0.564302, 1.1729, -0.525379, 1.14926, -0.53138, -0.838633 )
+
+[node name="Portal2" type="Portal" parent="RoomManager/RoomList/Sitting_Room"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.686944, 0.726843, 3.92085 )
+linked_room = NodePath("../../Kitchen")
+points = PoolVector2Array( 0.922664, -0.765043, 0.918694, 1.2364, -0.877258, 1.24207, -0.868991, -0.803407 )
+
+[node name="Utility" type="Room" parent="RoomManager/RoomList"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377385, 0, 0 )
+
+[node name="Utility" parent="RoomManager/RoomList/Utility" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.22269, -0.0484659, 0.147948 )
+
+[editable path="FPController"]
+[editable path="FPController/LeftHandController/LeftHand"]
+[editable path="FPController/LeftHandController/LeftHand/Hand_Nails_low_L"]
+[editable path="FPController/LeftHandController/FunctionTeleport"]
+[editable path="FPController/RightHandController/RightHand"]
+[editable path="FPController/RightHandController/RightHand/Hand_Nails_low_R"]
+[editable path="Menu"]

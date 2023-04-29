@@ -1,0 +1,8 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://textures/painted_plaster_17/PaintedPlaster017_2K_Color.jpg" type="Texture" id=2]
+
+[resource]
+params_cull_mode = 2
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 4, 4, 1 )
